@@ -77,7 +77,7 @@ bss_relo:
     ldr r1, =_sram_sbss
     ldr r2, =_sram_ebss
 
-/* handle case where data section size is zero */
+/* handle case where bss section size is zero */
     cmp r2, r1
     beq message 
 
