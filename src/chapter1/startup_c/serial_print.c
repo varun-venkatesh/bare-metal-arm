@@ -14,7 +14,7 @@ void uart0_print(const char* msg);
 
 void main(void)
 {
-    const char *start_msg = "Hello, World";
+    const char *start_msg = "Hello, World\n";
 
     uart0_print(start_msg);
     
