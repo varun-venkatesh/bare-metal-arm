@@ -70,13 +70,14 @@ __attribute__ ((section(".startup")))
 void _Reset_Handler(void)
 {
     /* Copy the data segment from flash to sram */
-
     uint32_t *pSrc = &_flash_sdata;   
     uint32_t *pDest = &_sram_sdata;
 
     while(pDest < &_sram_edata)
     {
-        *pDest++ = *pSrc++;
+        *pDest = *pSrc;
+        pDest++;
+        pSrc++;
     }
 
     /* Zero initialize the bss segment in sram */
@@ -84,7 +85,8 @@ void _Reset_Handler(void)
     
     while(pDest < &_sram_ebss)
     {
-        *pDest++ = 0;
+        *pDest = 0;
+        pDest++;
     }
 
     /* Call main() */
