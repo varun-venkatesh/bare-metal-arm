@@ -19,7 +19,7 @@ static volatile uart_regs *uart0 = (uart_regs*)0x4000C000u;
  * to use UART0, the UART0 bit in RCGC1 should be set.
  * Check page 220 of the above manual for 
  * the address of RCGC1 and its description
- * TODO: this is a hack to get the uart working. It will be places in
+ * TODO: this is a hack to get the uart working. It will be placed in
  * it's own file.
  */
 static void set_clk_uart0(void)
