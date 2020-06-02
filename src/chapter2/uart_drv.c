@@ -83,6 +83,10 @@ static void uart_set_example_line_ctrls(void)
 
 /* Initialize the uart device 
  * This is assumed to be called once following reset.
+ * NOTE: Since uart0 is being used, we don't have to turn on
+ * the corresponding AFSEL bits in GPIOAFSEL for PortA. 
+ * These pins are set to uart0 rx/tx by default.
+ * Refer http://www.ti.com/lit/ds/symlink/lm3s6965.pdf 12.2
  */
 void uart_init(uint32_t baudrate)
 {
