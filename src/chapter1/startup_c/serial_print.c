@@ -25,6 +25,7 @@ void uart0_print(const char* msg)
 {
     while(*msg)
     {
-        *lm3s6965_uart0 = *msg++;
+        *lm3s6965_uart0 = *msg;
+        msg++;
     }
 }
