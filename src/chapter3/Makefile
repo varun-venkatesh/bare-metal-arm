@@ -36,4 +36,3 @@ dump:
 	arm-none-eabi-nm -n startup.elf
 	arm-none-eabi-objdump -h startup.elf
 	arm-none-eabi-size startup.elf
-
