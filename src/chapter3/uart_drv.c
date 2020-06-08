@@ -34,7 +34,7 @@ static volatile uart_regs *uart0 = (uart_regs*)UART0_BASE;
  * The default setting of the system clock on LM3S6965 is 12MHz.
  * Refer: http://www.ti.com/lit/ds/symlink/lm3s6965.pdf Table 5-5.
  * Also, when you run qemu with lm3s6965, a peek into Regsiter RCC (0x400FE060)
- * and RCC2 (which overrides RCC) show that the value of SYSDIV/SYSDIV2 fields 
+ * and RCC2 (which overrides RCC if USERCC2 is set) show that the value of SYSDIV/SYSDIV2 fields 
  * respectively is 16 ==> the sysclock frequency is 12.5 MHz
  */
 #define UART_DFLT_SYSCLK 12500000u
