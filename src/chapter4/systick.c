@@ -12,7 +12,6 @@
 /* System Timer SysTcik register map structure.
  * Refer: http://www.ti.com/lit/ds/symlink/lm3s6965.pdf Table 3-7 and Section 3-3
  */
-
 typedef struct __attribute__((packed)){
     uint32_t STCTRL;            //0x0 SysTick Control and Status Register
     uint32_t STRELOAD;          //0x4 SysTick Reload Value Register
@@ -21,8 +20,8 @@ typedef struct __attribute__((packed)){
 
 static volatile systick_regs *systick = (systick_regs*)SYS_TIMER_BASE;
 
+// count variable to maintain the number of times the Systick counter counted down to zero.
 static volatile uint32_t tick_count = 0;
-
 
 /* Function to enable the SysTick timer 
  * by setting the ENABLE bit and 
