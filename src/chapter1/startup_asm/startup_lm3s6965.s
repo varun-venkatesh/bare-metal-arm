@@ -16,7 +16,7 @@
  */
 
 .section .vectors, "x"
-.word _sram_stacktop     /* 00: Reset value of the Stack Pointer */
+.word _sram_stacktop     /* 00: Reset value of the Main Stack Pointer */
 .word _startup           /* 01: Reset value of the Program Counter (Reset) */
 .word _hang              /* 02: Non-Maskable Interrupt */
 .word _hang              /* 03: Hard Fault Interrupt */
