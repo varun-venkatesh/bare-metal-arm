@@ -42,7 +42,7 @@ void _SysTick_Handler(void)         __attribute__ ((weak, alias("_Unused_Handler
 /* Exception Table */
 __attribute__ ((section(".vectors"), used))
 void (* const  _exceptions[CORTEX_M3_EXCEPTIONS])(void) = {
-     (void (*)(void))((uint32_t)&_sram_stacktop),           // 00: Reset value of the Stack Pointer
+     (void (*)(void))((uint32_t)&_sram_stacktop),           // 00: Reset/Initial Main Stack Pointer
     _Reset_Handler,                                         // 01: Reset value of the Program Counter
     _NMI_Handler,                                           // 02: Non-Maskable Interrupt (NMI)
     _Hard_Fault_Handler,                                    // 03: Hard Fault
