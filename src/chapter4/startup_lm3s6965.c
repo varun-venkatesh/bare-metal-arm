@@ -44,7 +44,7 @@ void dflt_irq_handler(void)         __attribute__ ((weak, alias("_Unused_Handler
 /* Exception Table */
 __attribute__ ((section(".vectors"), used))
 void (* const  _exceptions[])(void) = {
-     (void (*)(void))((uint32_t)&_sram_stacktop),           // 00: Initial Stack Pointer
+     (void (*)(void))((uint32_t)&_sram_stacktop),           // 00: Reset/Initial Main Stack Pointer
     _Reset_Handler,                                         // 01: Initial Program Counter
     _NMI_Handler,                                           // 02: Non-Maskable Interrupt(NMI)
     _Hard_Fault_Handler,                                    // 03: Hard Fault
