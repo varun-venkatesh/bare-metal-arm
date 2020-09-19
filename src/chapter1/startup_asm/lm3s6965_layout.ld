@@ -1,5 +1,5 @@
 /* This linkerscript is derived from the memory layout of TI Stellaris LM3S6965
- * Refer Refer: http://www.ti.com/lit/ds/symlink/lm3s6965.pdf Table 2-4
+ * Refer: http://www.ti.com/lit/ds/symlink/lm3s6965.pdf Table 2-4
  */
 
 MEMORY {
