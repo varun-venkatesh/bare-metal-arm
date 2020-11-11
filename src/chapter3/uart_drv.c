@@ -206,11 +206,11 @@ void uart0_irq_handler(void)
         {
             uart_tx_byte('\n');
         }
-        else if(c == '\b')
+        else if(c == '\177')
         {
-            // TODO: Figure out how to handle backspace
-            // for now send X (which isn't working)
-            uart_tx_byte('X');
+            // handle backspace '\177' by moving
+            // one space to the left via '\b'
+            uart_tx_byte('\b');
         }
         else
         {
