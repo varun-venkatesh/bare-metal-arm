@@ -52,7 +52,7 @@ rundbg: system.bin
 	qemu5.1-system-arm -S -M lm3s6965evb -kernel system.bin -gdb tcp::5678 -nographic -monitor telnet:127.0.0.1:1234,server,nowait 
 
 clean:
-	rm -f startup_lm3s6965.o serial_print.o uart_drv.o nvic.o sysctl.o systick.o init.o system.elf system.bin
+	rm -f startup_lm3s6965.o serial_print.o uart_drv.o nvic.o sysctl.o system_time.o systick.o task_scheduler.o example_tasks.o init.o system.elf system.bin
             
 dump: 
 	arm-none-eabi-nm -n startup_lm3s6965.o
@@ -65,8 +65,14 @@ dump:
 	arm-none-eabi-objdump -h nvic.o
 	arm-none-eabi-nm -n sysctl.o
 	arm-none-eabi-objdump -h sysctl.o
+	arm-none-eabi-nm -n system_timer.o
+	arm-none-eabi-objdump -h system_timer.o
 	arm-none-eabi-nm -n systick.o
 	arm-none-eabi-objdump -h systick.o
+	arm-none-eabi-nm -n task_scheduler.o
+	arm-none-eabi-objdump -h task_scheduler.o
+	arm-none-eabi-nm -n example_tasks.o
+	arm-none-eabi-objdump -h example_tasks.o
 	arm-none-eabi-nm -n init.o
 	arm-none-eabi-objdump -h init.o
 	arm-none-eabi-nm -n system.elf
