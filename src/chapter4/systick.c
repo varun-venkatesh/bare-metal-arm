@@ -49,7 +49,7 @@ void systick_irq_enable(void)
     systick->STCTRL |= STCTRL_INTEN; 
 }
 
-/* Function to enable the SysTick timer interrupt 
+/* Function to disable the SysTick timer interrupt 
  * by clearing the INTEN bit and 
  */
 void systick_irq_disable(void)
