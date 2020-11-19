@@ -16,10 +16,12 @@ task_scheduler_err task_scheduler_add_task(task_start_fptr start, systime_t dura
         return SCHEDULER_TOO_MANY_TASKS;
     }
 
+    // initilaize new task added
     new_task.start = start;
     new_task.duration = duration;
     new_task.last_run = 0;
 
+    // add initialized new task to the task list
     task_list[task_list_idx] = new_task;
     task_list_idx++;
 
@@ -29,22 +31,26 @@ task_scheduler_err task_scheduler_add_task(task_start_fptr start, systime_t dura
 
 /* This function is where the magic happens - 
  * the tasks in the task list are scheduled here.
- * In the forever loop, each task_desc in the task list is 
- * examined for a start function pointer. Then the check for whether
- * the task at hand has been run for it's duration 
- * since the last time it was scheduled - to decide
- * if it is to run or not.
  */
 void task_scheduler_run(void) {
     uint8_t idx;
     while(1) {
-        for(idx = 0; idx < MAX_TASKS; idx++) {
+        
+        // Go through each task_desc in the list
+        for(idx = 0; idx < task_list_idx; idx++) {
             task_desc* curr_task = &task_list[idx];
             
+            /* if the task_desc is not initialized - no valid entry function pointer
+             * move to the next task_desc
+             */
             if(curr_task->start == NULL) {
                 continue;
             }
-
+            
+            /* With a valid task_desc, check if has been run for it's duration
+             * since the last time it ran. If not, update it's last run time 
+             * and start the task by calling it's entry function
+             */
             if(system_time_get() - curr_task->last_run >= curr_task->duration) {
                 curr_task->last_run = system_time_get();
                 curr_task->start();
