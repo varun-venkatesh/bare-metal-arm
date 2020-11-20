@@ -31,7 +31,7 @@ run: system.bin
 	qemu-system-arm -M lm3s6965evb -kernel system.bin -nographic -monitor telnet:127.0.0.1:1234,server,nowait 
 
 rundbg: system.bin
-	qemu-system-arm -S -M lm3s6965evb -kernel system.bin -gdb tcp::7777 -nographic -monitor telnet:127.0.0.1:1234,server,nowait 
+	qemu-system-arm -S -M lm3s6965evb -kernel system.bin -gdb tcp::5678 -nographic -monitor telnet:127.0.0.1:1234,server,nowait 
 
 clean:
 	rm -f startup_lm3s6965.o serial_print.o uart_drv.o nvic.o sysctl.o systick.o init.o system.elf system.bin
