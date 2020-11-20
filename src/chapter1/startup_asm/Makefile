@@ -9,11 +9,14 @@ serial_print.o: serial_print.s
 startup_lm3s6965.elf: startup_lm3s6965.o serial_print.o
 	arm-none-eabi-ld -T lm3s6965_layout.ld -o startup_lm3s6965.elf startup_lm3s6965.o serial_print.o
 
-startup_lm3s6965.bin: startup_lm3s6965.elf
-	arm-none-eabi-objcopy -O binary startup_lm3s6965.elf startup_lm3s6965.bin
+system.bin: startup_lm3s6965.elf
+	arm-none-eabi-objcopy -O binary startup_lm3s6965.elf system.bin
 
-run: startup_lm3s6965.bin
-	qemu-system-arm -M lm3s6965evb -kernel startup_lm3s6965.bin -nographic -monitor telnet:127.0.0.1:1234,server,nowait 
+run: system.bin
+	qemu-system-arm -M lm3s6965evb -kernel system.bin -nographic -monitor telnet:127.0.0.1:1234,server,nowait 
+
+rundbg: system.bin
+	qemu-system-arm -S -M lm3s6965evb -kernel system.bin -gdb tcp::5678 -nographic -monitor telnet:127.0.0.1:1234,server,nowait 
 
 clean:
 	rm -f startup_lm3s6965.o serial_print.o startup_lm3s6965.elf startup_lm3s6965.bin
