@@ -31,6 +31,6 @@ dump:
 	arm-none-eabi-objdump -h serial_print.o
 	arm-none-eabi-nm -n uart_drv.o
 	arm-none-eabi-objdump -h uart_drv.o
-	arm-none-eabi-nm -n startup.elf
-	arm-none-eabi-objdump -h startup.elf
-	arm-none-eabi-size startup.elf
+	arm-none-eabi-nm -n startup_lm3s6965.elf
+	arm-none-eabi-objdump -h startup_lm3s6965.elf
+	arm-none-eabi-size startup_lm3s6965.elf
