@@ -9,7 +9,11 @@
 .thumb
 
 /*
+ * The vector table is an array of word data inside the system memory, 
+ * each representing the starting address of one exception type.
  * Vector table for arm Cortex-M3
+ * When an exception takes place, the processor etches the exception vector 
+ * (the starting address of the exception handler) from the vector table.
  * First vector value is placed in r13 (sp). 
  * Point it to the end of SRAM on lm3s6965evb. Refer: http://www.ti.com/lit/ds/symlink/lm3s6965.pdf Table 2-4
  * Note that the vector values must be 4 bytes - hence using the directive .word
